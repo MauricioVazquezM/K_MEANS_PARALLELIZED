@@ -1,4 +1,4 @@
-# K_MEANS_PARALLELIZED
+# K_Means_Parallelized
 
 <p align="center">
   <img width="800" height="300" src="https://miro.medium.com/v2/resize:fit:1200/1*rw8IUza1dbffBhiA4i0GNQ.png">
@@ -12,6 +12,8 @@
 - [Mauricio Vázquez Moran](https://github.com/MauricioVazquezM), Data Science and Actuarial Science Double Bachelor Program student at ITAM.
   
 </br>
+
+## Definition
 
 K-means is a popular clustering algorithm used in data science and machine learning to partition a set of data points into K distinct, non-overlapping clusters. 
 
