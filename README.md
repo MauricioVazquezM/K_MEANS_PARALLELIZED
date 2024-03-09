@@ -13,7 +13,7 @@
   
 </br>
 
-K-means is a popular clustering algorithm used in data science and machine learning to partition a set of data points into K distinct, non-overlapping clusters. Here's a summary of how it works and its key features:
+K-means is a popular clustering algorithm used in data science and machine learning to partition a set of data points into K distinct, non-overlapping clusters. 
 
 ## Algorithm Overview
 1. Initialization: Choose K initial centroids randomly from the data points.
