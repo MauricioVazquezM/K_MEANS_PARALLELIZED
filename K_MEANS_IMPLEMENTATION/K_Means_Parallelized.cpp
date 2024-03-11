@@ -63,6 +63,29 @@ void load_CSV(string file_name, float** points, long long int size) {
         point_number++;
 
     }
-    
+
 }
 
+
+/*
+    Writing data to a CSV file
+*/
+void save_to_CSV(string file_name, float** points, long long int size) {
+
+    // Declaring a file stream object for wiritng files
+    fstream fout;
+
+    // Opening the specified file name
+    fout.open(file_name, ios::out);
+
+    // Starting a loop that iterates  over each row of the result points array
+    for (long long int i = 0; i < size; i++) {
+
+        // Writing on the resulting points array
+        fout << points[i][0] << ","
+             << points[i][1] << ","
+             << points[i][2] << "\n";
+
+    }
+    
+}
