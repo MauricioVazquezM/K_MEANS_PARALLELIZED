@@ -1,8 +1,12 @@
-#include <omp.h>
 #include <iostream>
-#include <string>
+#include <vector>
 #include <fstream>
+#include <sstream>
 #include <cmath>
+#include <omp.h>
+#include <limits>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -87,5 +91,41 @@ void save_to_CSV(string file_name, float** points, long long int size) {
              << points[i][2] << "\n";
 
     }
-    
+
+}
+
+
+
+/* 
+    IMPLEMENTING K MEANS
+*/
+
+// Implementing auxiliar point data structure
+struct Point {
+
+    // Defining the auxiliar array for the coordinates
+    std::vector<double> coords;
+
+    // Defining our cluster_id auxiliar variable
+    int cluster_id;
+
+};
+
+// Implementing a Euclidean distance function 
+double euclidean_distance(const Point& p1, const Point& p2) {
+
+    // Defining a double auxiliar variable that will accumulate the sqaured differences
+    double sum = 0.0;
+
+    // Starting a loop thta will iterate over the coordinates of the point
+    for (size_t i = 0; i < p1.coords.size(); ++i) {
+
+        // Calculating the square of the difference of the -ith coordinate and adding this to the sum
+        sum += std::pow(p1.coords[i] - p2.coords[i], 2);
+
+    }
+
+    // Returning the euclidean distance
+    return std::sqrt(sum);
+
 }
