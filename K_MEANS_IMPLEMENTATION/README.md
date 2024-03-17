@@ -1,5 +1,41 @@
 # Documentation
 
+## Libraries
+- ***iostream***: provides facilities for input and output through streams, such as cin, cout, cerr, and clog, allowing reading from the standard input and writing to the standard output and standard error, respectively.
+- ***vector***: implements sequences of elements in a way that can dynamically resize itself automatically. It provides random access to elements, efficient insertion, and deletion of elements at the end.
+- ***cmath***: includes functions for basic mathematical operations, such as trigonometric functions, square root, exponential, logarithm, and more, facilitating complex mathematical calculations.
+- ***limits***: provides a way to query properties of fundamental arithmetic types, such as the maximum and minimum values that can be represented by a type.
+- ***cstdlib***: contains general-purpose functions, including dynamic memory management, random number generation, and system commands.
+- ***omp.h***: header file for OpenMP, a set of compiler directives, libraries, and environment variables that extend C, C++, and Fortran programs with directives to exploit parallelism in shared-memory environments.
+- ***stdio.h***: the C Standard Input and Output Library, used for operations related to input and output (I/O), such as reading and writing data to the console or files. It's part of the C standard library and is often used in C++ for C-style I/O operations.
+- ***chrono***: part of the C++ Standard Library for dealing with time. It provides time measurement, duration, and clock functionalities, enabling high precision time operations.
+- ***fstream***: Facilitates file handling in C++. It includes classes such as ifstream, ofstream, and fstream for creating, reading, and writing to files.
+- ***string***: provides the std::string class along with functions and operators that make string manipulation easier, such as concatenation, comparison, and search.
+- ***sstream***: includes the stringstream class, which allows string-based objects to be treated as streams. This is particularly useful for parsing data from strings.
+- ***algorithm***: contains a collection of function templates for algorithms that perform operations on ranges of elements, such as searching, sorting, counting, manipulating, and more.
+- ***random***: provides facilities for generating random numbers using various distributions. It offers a significant improvement over older techniques, allowing for more control over random number generation.
+<br>
+These libraries collectively offer a robust foundation for C++ programming, covering a wide range of needs from basic I/O operations, mathematical calculations, and string handling, to more advanced functionalities like file manipulation, time measurement, and parallel programming.
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <limits>
+#include <cstdlib>
+#include <omp.h>
+#include <stdio.h>
+#include <chrono>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <random>
+
+using namespace std;
+using namespace std::chrono;
+```
+
 ## Functions 
 
 ### Load_CSV Function
