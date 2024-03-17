@@ -2,7 +2,7 @@
 
 ## Functions 
 
-### Load_Csv Function
+### Load_CSV Function
 
 - This function reads a CSV file containing two-dimensional points into a two-dimensional array. It's tailored for files where each line represents a point with its x and y coordinates separated by a delimiter. The function provides basic error handling for file opening issues but assumes the input file is well-formatted and that the points array has been appropriately allocated before calling the function.
 
@@ -61,5 +61,37 @@ void load_CSV(string file_name, float** points, long long int size) {
     // Closing the file after reading all necessary data
     in.close();
     
+}
+```
+
+### Save_CSV Function
+
+- save_to_CSV is a utility function for saving 3D point data from an in-memory array to a CSV file, making it possible to persist data to disk, share it with other applications, or simply keep a record of the data for future use. The function handles basic error checking for file operations and assumes the points are stored in a contiguous block of memory accessible via a double pointer (float**).
+
+```cpp
+void save_to_CSV(string file_name, float** points, long long int size) {
+    ofstream fout(file_name);
+
+    // Checking if the file was successfully opened for writing
+    if (!fout) {
+
+        // Priting message of unsucessful open file
+        cerr << "Couldn't write to file: " << file_name << "\n";
+
+        // Exit the function
+        return;
+        
+    }
+
+    // For loop to iterate over each in the points array
+    for (long long int i = 0; i < size; i++) {
+
+        // Writing the x-coordindate, the y-coordinate and the cluster id
+        fout << points[i][0] << "," << points[i][1] << "," << points[i][2] << "\n";
+    }
+
+    // Closing the file
+    fout.close();
+
 }
 ```

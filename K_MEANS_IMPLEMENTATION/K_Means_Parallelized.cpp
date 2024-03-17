@@ -79,7 +79,7 @@ void load_CSV(string file_name, float** points, long long int size) {
 
     // Closing the file after reading all necessary data
     in.close();
-    
+
 }
 
 /*
@@ -88,16 +88,27 @@ void load_CSV(string file_name, float** points, long long int size) {
 void save_to_CSV(string file_name, float** points, long long int size) {
     ofstream fout(file_name);
 
+    // Checking if the file was successfully opened for writing
     if (!fout) {
+
+        // Priting message of unsucessful open file
         cerr << "Couldn't write to file: " << file_name << "\n";
+
+        // Exit the function
         return;
+        
     }
 
+    // For loop to iterate over each in the points array
     for (long long int i = 0; i < size; i++) {
+
+        // Writing the x-coordindate, the y-coordinate and the cluster id
         fout << points[i][0] << "," << points[i][1] << "," << points[i][2] << "\n";
     }
 
+    // Closing the file
     fout.close();
+
 }
 
 /* 
