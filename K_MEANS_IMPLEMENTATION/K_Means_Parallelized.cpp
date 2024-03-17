@@ -320,45 +320,92 @@ void kmeans_paralelo(float** points, int num_clusters, long long int size, int m
 
 }
 
+/* 
+    MAIN
+*/
+
 int main(int argc, char** argv) {
+
+    // Command line argument validation: if fewer than 4 arguments are provided
     if (argc < 4) {
+
+        // Displaying usage message
         cerr << "Usage: " << argv[0] << " <data_file.csv> <num_clusters> <output_file.csv>\n";
+
+        // Program exit
         return 1;
+
     }
 
+    // Converting the first command-line argument (argv[1]) into a long long int representing the size (number of data points)
     const long long int size = atoll(argv[1]);
+
+    // Converting the second command-line argument (argv[2]) into an integer that represents the number of clusters (num_clusters) to be used in the K-means algorithm
     const int num_clusters = atoi(argv[2]);
+
+    // Storing the first command-line argument (argv[1]) as input_file_name
     const string input_file_name = argv[1];
+
+    // Storing the third command-line argument (argv[3]) as output_file_name_paralelo
     const string output_file_name_paralelo = argv[3];
+
+    // Setting a constant max_iterations to 20, defining a cap on the number of iterations the K-means algorithm will perform
     const int max_iterations = 20;
 
+    // Determining the maximum number of threads
     int num_threads = omp_get_max_threads();
+
+    // Checking if the program has been executed with at least five command line arguments
     if (argc >= 5) {
+
+        // Converting the fourth command-line argument from a string to an integer, which is then assigned to num_threads variable
         num_threads = atoi(argv[4]);
+
     }
+
+    // Setting the Number of Threads for OpenMP
     omp_set_num_threads(num_threads);
 
-
+    // Allocating dynamic memory for an array
     float** paralelo = new float*[size];
+
+    // For loop iterating from 0 to size-1, where size presents the total number of data points to be processed
     for (long long int i = 0; i < size; i++) {
+
+        // Allocating memory for an array of three float values for each ith entry of paralelo array
         paralelo[i] = new float[3]{0.0, 0.0, -1}; 
                                                   
     }
 
-
+    // Using our load_csv function 
     load_CSV(input_file_name, paralelo, size);
 
+    // Starting time measuremente
     double start_paralelo = omp_get_wtime();
+
+    // Executing the K-means Clustering Algorithm
     kmeans_paralelo(paralelo, num_clusters, size, max_iterations);
+
+    // Measuring Execution Time
     double tiempo_ejecucion_paralelo = omp_get_wtime() - start_paralelo;
+
+    //Reporting Execution Time
     cout << "Tiempo de ejecución en paralelo: " << tiempo_ejecucion_paralelo << "\n";
     
+    // Saving Results to a CSV File
     save_to_CSV(output_file_name_paralelo, paralelo, size);
 
+    // For loop for deleting sub arrays
     for (long long int i = 0; i < size; i++) {
+
+        // Deallocating each of these sub-arrays
         delete[] paralelo[i];
+
     }
+
+    // Deleting the outer array
     delete[] paralelo;
 
+    // Program exit
     return 0;
 }
